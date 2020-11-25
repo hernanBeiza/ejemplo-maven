@@ -1,0 +1,56 @@
+pipeline {
+  agent any
+  /*
+  tools {
+    // Install the Maven version configured as "M3" and add it to the path.
+    maven "M3"
+  }
+  */
+  stages {
+    stage('Clean') {
+    	steps {
+	      sh "rm -rf ejemplo-maven"
+	    }
+    }
+    stage('Clone') {
+    	steps {
+	      sh "git clone https://github.com/hernanBeiza/ejemplo-maven.git"
+	      // mvn 'clean install'
+	      // Run Maven on a Unix agent.
+	      // sh "mvn -Dmaven.test.failure.ignore=true clean package"
+	      // To run Maven on a Windows agent, use
+	      // bat "mvn -Dmaven.test.failure.ignore=true clean package"    		
+    	}
+    }
+    stage('Compile') {
+    	steps {
+	    	echo "Compilar código"
+	      sh "cd ejemplo-maven && ls && ./mvnw clean compile -e"
+	    }
+    }
+    stage('Test') {
+    	steps {
+	    	echo "Testear código"
+	    	sh "cd ejemplo-maven && ./mvnw clean test -e"
+	    }
+    }
+    stage('Jar') {
+    	steps {
+	    	echo "Generar JAR"
+	    	sh "cd ejemplo-maven && ./mvnw clean package -e"
+  	  }
+    }
+    stage('Run') {
+    	steps {
+	    	echo "Ejecutar JAR"
+	    	sh "cd ejemplo-maven && nohup bash mvnw spring-boot:run &"
+  	  }
+	  }
+    stage('TestApp') {
+    	steps {
+	    	echo "Probar endpoint"
+	    	sh "sleep 15 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
+  	  }
+	  }
+	}
+}
