@@ -1,6 +1,6 @@
 # Getting Started
 
-Repositorio de prueba para webhooks
+Repositorio de prueba para webhooks.
 
 ## Windows
 
