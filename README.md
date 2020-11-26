@@ -1,6 +1,6 @@
 # Getting Started
 
-Repositorio de prueba para webhooks.
+Repositorio de prueba de webhooks entre GitHub y Jenkins, a través de ngrok.
 
 ## Windows
 
