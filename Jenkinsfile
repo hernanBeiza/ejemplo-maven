@@ -51,7 +51,7 @@ pipeline {
     	steps {
 	    	echo "Análisis Sonar"
 		    //Usar el nombre del sonarqube server configurado en Jenkins
-		    withSonarQubeEnv('sonar-scanner') {
+		    withSonarQubeEnv('sonar') {
 		      sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
 	    	}
 	    }
