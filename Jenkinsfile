@@ -7,12 +7,12 @@ pipeline {
   }
   */
   stages {
+    /*
     stage('Clean') {
     	steps {
 	      sh "rm -rf ejemplo-maven"
 	    }
     }
-    /*
     stage('Clone') {
     	steps {
 	      sh "git clone https://github.com/hernanBeiza/ejemplo-maven.git"
