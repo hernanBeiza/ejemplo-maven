@@ -27,19 +27,22 @@ pipeline {
     stage('Compile') {
     	steps {
 	    	echo "Compilar código"
-	      sh "cd ejemplo-maven && ls && ./mvnw clean compile -e"
+	      //sh "cd ejemplo-maven && ls && ./mvnw clean compile -e"
+	      sh "ls && ./mvnw clean compile -e"
 	    }
     }
     stage('Test') {
     	steps {
 	    	echo "Testear código"
-	    	sh "cd ejemplo-maven && ./mvnw clean test -e"
+	    	//sh "cd ejemplo-maven && ./mvnw clean test -e"
+	    	sh "./mvnw clean test -e"
 	    }
     }
     stage('Jar') {
     	steps {
 	    	echo "Generar JAR"
-	    	sh "cd ejemplo-maven && ./mvnw clean package -e"
+	    	//sh "cd ejemplo-maven && ./mvnw clean package -e"
+	    	sh "./mvnw clean package -e"
   	  }
     }
     stage('Sonar') {
@@ -54,7 +57,8 @@ pipeline {
     stage('Run') {
     	steps {
 	    	echo "Ejecutar JAR"
-	    	sh "cd ejemplo-maven && nohup bash mvnw spring-boot:run &"
+	    	//sh "cd ejemplo-maven && nohup bash mvnw spring-boot:run &"
+	    	sh "nohup bash mvnw spring-boot:run &"
   	  }
 	  }
     stage('TestApp') {
