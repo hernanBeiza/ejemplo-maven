@@ -31,6 +31,7 @@ pipeline {
 	      sh "ls && ./mvnw clean compile -e"
 	    }
     }
+    /*
     stage('Test') {
     	steps {
 	    	echo "Testear código"
@@ -38,6 +39,7 @@ pipeline {
 	    	sh "./mvnw clean test -e"
 	    }
     }
+    */
     stage('Jar') {
     	steps {
 	    	echo "Generar JAR"
