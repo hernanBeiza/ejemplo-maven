@@ -9,9 +9,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class DevOpsUsach2020ApplicationTests {
 
-	@Test
-	void main(String[] args) {
-		assertNotNull(SpringApplication.run(DevOpsUsach2020Application.class, args));
-	}
-
 }
