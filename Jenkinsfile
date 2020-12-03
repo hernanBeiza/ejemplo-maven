@@ -12,6 +12,7 @@ pipeline {
 	      sh "rm -rf ejemplo-maven"
 	    }
     }
+    /*
     stage('Clone') {
     	steps {
 	      sh "git clone https://github.com/hernanBeiza/ejemplo-maven.git"
@@ -22,6 +23,7 @@ pipeline {
 	      // bat "mvn -Dmaven.test.failure.ignore=true clean package"    		
     	}
     }
+    */
     stage('Compile') {
     	steps {
 	    	echo "Compilar código"
