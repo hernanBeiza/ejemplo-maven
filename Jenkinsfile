@@ -40,6 +40,15 @@ pipeline {
 	    	sh "cd ejemplo-maven && ./mvnw clean package -e"
   	  }
     }
+    stage('Sonar') {
+    	steps {
+	    	echo "Análisis Sonar"
+		    def sqScannerMsBuildHome = tool 'Scanner for MSBuild 4.6'
+		    withSonarQubeEnv('sonar-scanner') {
+		      sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+		    }
+	    }
+    }
     stage('Run') {
     	steps {
 	    	echo "Ejecutar JAR"
